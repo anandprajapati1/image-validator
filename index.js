@@ -57,9 +57,9 @@ function setupFileReader(imgFile, $imageUploadTemplate, $preview, validationCall
 
 function loadBaseImages() {
     var _site = "svg";
-    location.search && location.search.replace("?", "").split("&").filter(function () {
-        if (this && this.split("=")[0] === "site") {
-            _site = this.split("=")[1];
+    location.search && location.search.replace("?", "").split("&").filter(function (t) {
+        if (t && t.split("=")[0] === "site") {
+            _site = t.split("=")[1];
         }
     });
 
