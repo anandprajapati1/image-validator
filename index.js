@@ -56,7 +56,14 @@ function setupFileReader(imgFile, $imageUploadTemplate, $preview, validationCall
 }
 
 function loadBaseImages() {
-    fetch("./source-image.json").then(function (res) {
+    var _site = "svg";
+    location.search && location.search.replace("?", "").split("&").filter(function () {
+        if (this && this.split("=")[0] === "site") {
+            _site = this.split("=")[1];
+        }
+    });
+
+    fetch("https://warm-reaches-88469.herokuapp.com/api/getImageStandard/" + _site).then(function (res) {
         if (res.ok) { // if HTTP-status is 200-299
             res.json().then(function (d) {
                 var $template = $(".template"),
@@ -79,13 +86,6 @@ function loadBaseImages() {
                     };
                     xhr.send(null);
                 });
-
-                // $(".image-data").each(function () {
-                //     var $detail = $(this).find(".detail");
-                //     var $img = $detail.children("img")[0];
-                //     $detail.find(".dimension>span").text($img.naturalWidth + 'x' + $img.naturalHeight);
-                //     var r = gcd($img.naturalWidth, $img.naturalHeight);
-                //     $detail.find(".aspect-ratio>span").text($img.naturalWidth / r + ':' + $img.naturalHeight / r);
             });
         }
     });
