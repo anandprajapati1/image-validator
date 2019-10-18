@@ -66,6 +66,9 @@ function loadBaseImages() {
     fetch("https://warm-reaches-88469.herokuapp.com/api/getImageStandard/" + _site).then(function (res) {
         if (res.ok) { // if HTTP-status is 200-299
             res.json().then(function (d) {
+                if(!d) {
+                    return false;
+                }
                 var $template = $(".template"),
                     $container = $(".container");
                 d.forEach(function (element) {
@@ -86,6 +89,8 @@ function loadBaseImages() {
                     };
                     xhr.send(null);
                 });
+            }).catch(function() {
+                console.log("No record found");
             });
         }
     });
