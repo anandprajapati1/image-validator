@@ -9,9 +9,5 @@
   },
   "author": "Anand Prajapati",
   "license": "ISC",
-  "dependencies": {
-    "bootstrap": "^4.3.1",
-    "image-size": "^0.8.3",
-    "jquery": "^3.4.1"
-  }
+  "dependencies": {}
 }
