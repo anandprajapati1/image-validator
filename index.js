@@ -71,6 +71,8 @@ function loadBaseImages() {
 
     fetch(imageServiceBaseUrl + _site).then(function (res) {
         if (res.ok) { // if HTTP-status is 200-299
+            $(".container .no-record").hide();
+            $(".container .validatior").show();
             res.json().then(function (d) {
                 if (!d) {
                     return false;
@@ -96,7 +98,10 @@ function loadBaseImages() {
                     xhr.send(null);
                 });
             }).catch(function () {
-                console.log("No record found");
+                $(".container .no-record").show();
+                $(".container .validatior").hide();
+
+                // console.log("No record found");
             });
         }
     });
