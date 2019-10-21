@@ -1,5 +1,5 @@
 // const bsCustomFileInput = require('bs-custom-file-input');
-
+var imageServiceBaseUrl = "https://warm-reaches-88469.herokuapp.com/api/getImageStandard/";
 $(document).ready(function () {
 
     loadBaseImages();
@@ -33,10 +33,14 @@ $(document).ready(function () {
 
 function validator() {
     var arMatch = $(this).parents(".image-data").find(".detail .aspect-ratio>span").text() === $(this).parent().find(".aspect-ratio>span").text();
-    var dimMatch = $(this).parents(".image-data").find(".detail .dimension>span").text() === $(this).parent().find(".dimension>span").text();
+    var srcWidth = parseInt($(this).parents(".image-data").find(".detail .dimension>span").text().split("x")[0], 10);
+    var trgtWidth = parseInt($(this).parent().find(".dimension>span").text().split("x")[0], 10);
 
-    $(this).parent().prepend("&nbsp;<span class=\"badge badge-" + (dimMatch ? "success" : "info") + "\">" + (dimMatch ? "Matching" : "Not matching") + "</span>");
-    $(this).parent().prepend("<span class=\"badge badge-" + (arMatch ? "success" : "danger") + "\">" + (arMatch ? "Valid" : "Invalid") + "</span>");
+    //>> Add badge
+    $(this).parent().find(".aspect-ratio").append("&nbsp;<span class=\"badge badge-" + (arMatch ? "success" : "danger") + "\">" + (arMatch ? "Match" : "Mismatch") + "</span>");
+    if (arMatch) {
+        $(this).parent().find(".dimension").append("&nbsp;<span class=\"badge badge-" + (trgtWidth >= srcWidth ? "success" : "warning") + "\" " + (trgtWidth < srcWidth ? "title=\"Image may get stretched\"" : "") + ">" + (trgtWidth >= srcWidth ? "Perfect" : "Smaller image") + "</span>");
+    }
 }
 
 function setupFileReader(imgFile, $imageUploadTemplate, $preview, validationCallback) {
@@ -57,16 +61,18 @@ function setupFileReader(imgFile, $imageUploadTemplate, $preview, validationCall
 
 function loadBaseImages() {
     var _site = "svg";
-    location.search && location.search.replace("?", "").split("&").filter(function (t) {
-        if (t && t.split("=")[0] === "site") {
-            _site = t.split("=")[1];
-        }
-    });
+    if (location.search) {
+        location.search.replace("?", "").split("&").filter(function (t) {
+            if (t && t.split("=")[0] === "site") {
+                _site = t.split("=")[1];
+            }
+        });
+    }
 
-    fetch("https://warm-reaches-88469.herokuapp.com/api/getImageStandard/" + _site).then(function (res) {
+    fetch(imageServiceBaseUrl + _site).then(function (res) {
         if (res.ok) { // if HTTP-status is 200-299
             res.json().then(function (d) {
-                if(!d) {
+                if (!d) {
                     return false;
                 }
                 var $template = $(".template"),
@@ -89,7 +95,7 @@ function loadBaseImages() {
                     };
                     xhr.send(null);
                 });
-            }).catch(function() {
+            }).catch(function () {
                 console.log("No record found");
             });
         }

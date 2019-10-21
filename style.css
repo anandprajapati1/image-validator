@@ -25,26 +25,33 @@
     cursor: pointer;
 }
 
-.detail .dimension,
-.detail .aspect-ratio,
-.detail .size {
+.dimension,
+.aspect-ratio,
+.size {
     font-weight: 700;
     margin-bottom: 0;
 }
 
-.detail .dimension>span,
-.detail .aspect-ratio>span,
-.detail .size>span {
+.dimension>span,
+.aspect-ratio>span,
+.size>span {
     font-weight: 400;
 }
 
 .uploader {}
 
-.uploader .image-btn {}
+.uploader .image-btn {
+    cursor: pointer;
+}
 
 .preview {
     display: none;
-    background: white;
 }
 
-.preview img {}
+.preview .group {
+    padding-bottom: 20px;
+}
+
+.preview img {
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.4);
+}
