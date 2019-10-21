@@ -17,49 +17,56 @@
         <p>Please validate your images againast target images</p>
         <br>
         <br>
-        <div class="row header">
-            <div class="col-md-4">
-                <p class="h4">
-                    Standard Image
-                </p>
-            </div>
-            <div class="col-md-8">
-                <p class="h4">
-                    Image to be validated
-                </p>
-            </div>
-        </div>
-        <div class="row image-data template">
-            <div class="col-md-4">
-                <div class="detail">
-                    <div class="alert alert-info">
-                        <p class="h5 image-name"></p>
-                    </div>
-                    <img src="" class="img-fluid" alt="Responsive image" title="Click to preview in new tab">
-                    <p class="dimension">Dimension: <span></span></p>
-                    <p class="aspect-ratio">Aspect ratio: <span></span></p>
-                    <p class="size">Size: <span></span> Kb</p>
+        <div class="validatior">
+            <div class="row header">
+                <div class="col-md-4">
+                    <p class="h4">
+                        Standard Image
+                    </p>
+                </div>
+                <div class="col-md-8">
+                    <p class="h4">
+                        Image to be validated
+                    </p>
                 </div>
             </div>
-            <div class="col-md-8">
-                <div class="uploader">
-                    <p>Choose your file to validate against this image</p>
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input image-btn" accept=".jpg,.jpeg,.png" multiple>
-                        <label class="custom-file-label" for="customFile">Choose file</label>
+            <div class="row image-data template">
+                <div class="col-md-4">
+                    <div class="detail">
+                        <div class="alert alert-info">
+                            <p class="h5 image-name"></p>
+                        </div>
+                        <img src="" class="img-fluid" alt="Responsive image" title="Click to preview in new tab">
+                        <p class="dimension">Dimension: <span></span></p>
+                        <p class="aspect-ratio">Aspect ratio: <span></span></p>
+                        <p class="size">Size: <span></span> Kb</p>
                     </div>
                 </div>
-                <div class="preview">
-                    <div class="row">
-                        <div class="col-md-4 group">
-                            <img src="" class="img-fluid" alt="Responsive image">
-                            <p class="dimension">Dimension: <span></span></p>
-                            <p class="aspect-ratio">Aspect ratio: <span></span></p>
-                            <p class="size">Size: <span></span> Kb</p>
+                <div class="col-md-8">
+                    <div class="uploader">
+                        <p>Choose your file to validate against this image</p>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input image-btn" accept=".jpg,.jpeg,.png" multiple>
+                            <label class="custom-file-label" for="customFile">Choose file</label>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-outline-danger clear btn-block"> Clear</button>
+                    <div class="preview">
+                        <div class="row">
+                            <div class="col-md-4 group">
+                                <img src="" class="img-fluid" alt="Responsive image">
+                                <p class="dimension">Dimension: <span></span></p>
+                                <p class="aspect-ratio">Aspect ratio: <span></span></p>
+                                <p class="size">Size: <span></span> Kb</p>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-outline-danger clear btn-block"> Clear</button>
+                    </div>
                 </div>
+            </div>
+        </div>
+        <div class="no-record text-center">
+            <div class="alert alert-danger">
+                <p class="h3">Site not configured</p>
             </div>
         </div>
     </div>

@@ -44,7 +44,7 @@
     cursor: pointer;
 }
 
-.preview {
+.preview, .no-record {
     display: none;
 }
 
