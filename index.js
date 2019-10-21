@@ -1,5 +1,5 @@
 // const bsCustomFileInput = require('bs-custom-file-input');
-
+var imageServiceBaseUrl = "https://warm-reaches-88469.herokuapp.com/api/getImageStandard/";
 $(document).ready(function () {
 
     loadBaseImages();
@@ -69,7 +69,7 @@ function loadBaseImages() {
         });
     }
 
-    fetch("https://warm-reaches-88469.herokuapp.com/api/getImageStandard/" + _site).then(function (res) {
+    fetch(imageServiceBaseUrl + _site).then(function (res) {
         if (res.ok) { // if HTTP-status is 200-299
             res.json().then(function (d) {
                 if (!d) {
