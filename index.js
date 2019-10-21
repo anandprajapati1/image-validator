@@ -1,5 +1,5 @@
-// const bsCustomFileInput = require('bs-custom-file-input');
 var imageServiceBaseUrl = "https://warm-reaches-88469.herokuapp.com/api/getImageStandard/";
+// var imageServiceBaseUrl = "http://localhost:3000/api/getImageStandard/";
 $(document).ready(function () {
 
     loadBaseImages();
@@ -84,6 +84,11 @@ function loadBaseImages() {
                     $entry.find(".detail img")[0].onload = getImageDetails;
                     $entry.find(".detail img").attr("src", element.url);
                     $entry.find(".detail .image-name").text(element.name);
+                    if (element.referencePage) {
+                        $entry.find(".detail .reference-url>a").attr("href", element.referencePage);
+                    } else {
+                        $entry.find(".detail .reference-url>a").remove();
+                    }
                     $container.append($entry);
 
                     var xhr = new XMLHttpRequest();
