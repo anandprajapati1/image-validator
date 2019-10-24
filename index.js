@@ -54,7 +54,7 @@ function setupFileReader(imgFile, $imageUploadTemplate, $preview, validationCall
     reader.onload = function (e) {
         // console.log(e.target);
         $($img).attr('src', e.target.result);
-        $element.find(".size>span").text(Math.round(imgFile.size / 1024));
+        $element.find(".size>span").text((imgFile.size / 1024).toFixed(1));
     };
     reader.readAsDataURL(imgFile);
 }
@@ -96,7 +96,7 @@ function loadBaseImages() {
                     xhr.onreadystatechange = function () {
                         if (xhr.readyState == 4) {
                             if (xhr.status == 200) {
-                                $entry.find(".size>span").text(Math.round(xhr.getResponseHeader('Content-Length') / 1024));
+                                $entry.find(".size>span").text((xhr.getResponseHeader('Content-Length') / 1024).toFixed(1));
                             }
                         }
                     };
