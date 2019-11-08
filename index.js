@@ -32,7 +32,9 @@ $(document).ready(function () {
 });
 
 function validator() {
-    var arMatch = $(this).parents(".image-data").find(".detail .aspect-ratio>span").text() === $(this).parent().find(".aspect-ratio>span").text();
+    var ar1 = parseFloat($(this).parents(".image-data").find(".detail .aspect-ratio>span").data("ar"));
+    var ar2 = parseFloat($(this).parent().find(".aspect-ratio>span").data("ar"));
+    var arMatch = Math.abs(ar1 - ar2) < 0.01;
     var srcWidth = parseInt($(this).parents(".image-data").find(".detail .dimension>span").text().split("x")[0], 10);
     var trgtWidth = parseInt($(this).parent().find(".dimension>span").text().split("x")[0], 10);
 
@@ -116,7 +118,8 @@ function getImageDetails(validationCallback) {
     var $parent = $(this).parent();
     var r = gcd(this.naturalWidth, this.naturalHeight);
     $parent.find(".dimension>span").text(this.naturalWidth + 'x' + this.naturalHeight);
-    $parent.find(".aspect-ratio>span").text(this.naturalWidth / r + ':' + this.naturalHeight / r);
+    $parent.find(".aspect-ratio>span").text(this.naturalWidth / r + ':' + this.naturalHeight / r).attr("data-ar", (this.naturalWidth / this.naturalHeight).toFixed(2));
+    $parent.find(".aspect-ratio").attr("title", "Aspect ratio: " + (this.naturalWidth / this.naturalHeight).toFixed(2));
 
     if (typeof validationCallback === "function" && validationCallback) {
         validationCallback.call(this);
