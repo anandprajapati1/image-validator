@@ -32,6 +32,10 @@
     margin-bottom: 0;
 }
 
+.aspect-ratio{
+    cursor: help;
+}
+
 .dimension>span,
 .aspect-ratio>span,
 .size>span {
