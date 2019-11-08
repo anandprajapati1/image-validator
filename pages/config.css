@@ -1,0 +1,65 @@
+.template {
+    display: none;
+}
+
+.image-data {
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+
+.detail {
+    background: rgba(211, 211, 211, 0.25);
+    border-radius: 3px;
+    padding: 20px 15px;
+    margin-bottom: 25px;
+    box-sizing: border-box;
+    height: 460px;
+    max-height: 460px;
+    position: relative;
+}
+
+.detail>img {
+    cursor: pointer;
+    max-height: 210px;
+}
+
+.dimension,
+.aspect-ratio,
+.size {
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.dimension>span,
+.aspect-ratio>span,
+.size>span {
+    font-weight: 400;
+}
+
+.config-section{
+    display: none;
+    padding-top: 20px;
+    margin-bottom: 50px;
+}
+.config-section .image-data{
+    padding: 0 15px;
+}
+.config-section .add-config{
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    box-sizing: border-box;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer{
+    padding: 15px 0;
+}
+
+.footer button {
+    min-width: 200px;
+}

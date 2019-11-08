@@ -1,0 +1,61 @@
+<style>
+    .header {
+        margin-bottom: 50px;
+    }
+
+    .header ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .header-item {
+        padding: 15px 0;
+        margin: 0 25px 0 0;
+        position: relative;
+    }
+
+    .header-item.active:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        border-bottom: 2px solid lightskyblue;
+    }
+
+    .header-item>a {
+        text-decoration: none;
+    }
+
+    .custom-file-label {
+        overflow: hidden;
+    }
+
+    button>span[class^="spinner-"] {
+        display: none;
+    }
+
+    button:disabled>span[class^="spinner-"] {
+        display: block;
+    }
+</style>
+<div class="header">
+    <ul>
+        <li class="header-item"><a href="config.html">Configuration</a></li>
+        <li class="header-item"><a href="#">Set Focal Point</a></li>
+    </ul>
+    <script>
+        $(document).ready(function () {
+            $(".header-item").each(function () {
+                if (location.pathname.indexOf($(this).find("a").attr("href")) > -1) {
+                    $(this).addClass("active");
+                }
+            });
+        });
+
+    </script>
+</div>
